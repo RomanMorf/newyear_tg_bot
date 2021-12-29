@@ -7,21 +7,4 @@ module.exports = {
       ]
     })
   },
-  
-  // againOptions:{
-  //   reply_markup: JSON.stringify({
-  //       inline_keyboard: [
-  //       [{text: 'Играть еще раз', callback_data: '/again'}]
-  //     ]
-  //   })
-  // },
-
-  // egipetClue:{
-  //   reply_markup: JSON.stringify({
-  //       inline_keyboard: [
-  //       [{text: 'Фото подсказка', callback_data: '/egipetClue'}]
-  //     ]
-  //   })
-  // },
-
 }
