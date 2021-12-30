@@ -15,10 +15,10 @@ bot.setMyCommands([
 let chatId = 1
 let gameCount = 0
 
-setInterval(() => {
-  const data = new Date
-  console.log(data, 'gameCount -', gameCount);
-}, 5000);
+// setInterval(() => {
+//   const data = new Date
+//   console.log(data, 'gameCount -', gameCount);
+// }, 5000);
 
 
 function superPuperGame(text, gameData, chatId) {
@@ -118,8 +118,7 @@ bot.on('callback_query', (msg) => {
 В любой момент игры, можно начать с начала.
 Для это необходимо снова написать в чат /start
 `, 2, chatId)
-sendMesFunc('Не переживай. Старуй у тебя всё получиться ! /start', 12, chatId)
-
+sendMesFunc('Не переживай. Старуй у тебя всё получиться ! /start', 5, chatId)
     return
   }
 
