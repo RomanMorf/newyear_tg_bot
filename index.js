@@ -12,13 +12,18 @@ bot.setMyCommands([
   {command: '/info', description: 'Получить информацию по игре'},
 ])
 
-let chatId = 1
-let gameCount = 0
+function showStats() {
+  console.log('showStats');
+  console.log(gameCount);
+}
 
-// setInterval(() => {
-//   const data = new Date
-//   console.log(data, 'gameCount -', gameCount);
-// }, 5000);
+let chatId = 1
+let gameCount = 12
+
+setInterval(() => {
+  const data = new Date
+  console.log(data, 'gameCount -', gameCount);
+}, 5000);
 
 
 function superPuperGame(text, gameData, chatId) {
@@ -86,7 +91,6 @@ function startGame(chatId) {
   sendMesFunc('Отилчно 🥳 Ну что ж... начнём искать 🎁', 0, chatId)
   sendMesFunc('Для разогрева, я задам очень простой вопрос )', 3, chatId)
   sendMesFunc('В каком году родилась самая красивая и добрая девушка в мире ? 😉', 6, chatId)
-
 }
 function sendMesFunc(text = '...', delay = 0, id = chatId, options) {
   setTimeout(()=> bot.sendMessage(id, `${text}`, options), delay * 1000)
