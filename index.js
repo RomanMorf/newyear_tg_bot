@@ -13,7 +13,7 @@ bot.setMyCommands([
 ])
 
 let chatId = 1
-let gameCount = 4
+let gameCount = 0
 
 setInterval(() => {
   const data = new Date
