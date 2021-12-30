@@ -13,7 +13,7 @@ bot.setMyCommands([
 ])
 
 let chatId = 1
-let gameCount = 9
+let gameCount = 4
 
 setInterval(() => {
   const data = new Date
@@ -31,19 +31,23 @@ function superPuperGame(text, gameData, chatId) {
 
   if (text === gameData[gameCount].answer ) {
     let idx = 0
+
     gameData[gameCount].text.forEach((text, index) => {
-      idx = index
+      idx += 1
       const delay = text[1] || index * 5
       sendMesFunc(text[0], delay, chatId)
     })
+
     if (gameData[gameCount].photo) {
-      gameData[gameCount].photo.forEach((text) => {
-        const delay = text[1] || idx * 5 + 5
-        console.log(delay);
-        sendPhotoFunc(text[0], delay, chatId)
+      gameData[gameCount].photo.forEach((photo, index) => {
+        const delay = photo[1] || idx > index ? idx * 5 : index * 5
+        sendPhotoFunc(photo[0], delay, chatId)
+        idx += 1
       })
     }
+
     gameCount += 1
+
     return
   } 
 
@@ -78,10 +82,7 @@ bot.on('message', msg => {
 
 
 function startGame(chatId) {
-  game.firstPart = true
-  game.secondPart = false
-  game.thirdPart = false
-
+  gameCount = 1
   sendMesFunc('Отилчно 🥳 Ну что ж... начнём искать 🎁', 0, chatId)
   sendMesFunc('Для разогрева, я задам очень простой вопрос )', 3, chatId)
   sendMesFunc('В каком году родилась самая красивая и добрая девушка в мире ? 😉', 6, chatId)
@@ -98,10 +99,6 @@ bot.on('callback_query', (msg) => {
   const data = msg.data
   const chatId = msg.message.chat.id
 
-  if (data === '/again') {
-    startGame(chatId)
-    return
-  }
 
   if (data === '/game') {
     startGame(chatId)
@@ -112,10 +109,17 @@ bot.on('callback_query', (msg) => {
   if (data === '/rules') {
     sendMesFunc('Вашему вниманию представляються правила игры:', 0, chatId)
     sendMesFunc(`
-Игра состоит из несокльких раундов 
-и т.д и т.п...
-потом допишу )))
-`, 3, chatId)
+Игра - это линейный квест. 
+Следующее задание откроеться только после выполнения всех предыдущих. 
+По ходу выполнения будут подсказки.
+Если столкнешся с какими-то трудностями, что исключено 😁
+Тебе всегда помогут... )
+
+В любой момент игры, можно начать с начала.
+Для это необходимо снова написать в чат /start
+`, 2, chatId)
+sendMesFunc('Не переживай. Старуй у тебя всё получиться ! /start', 12, chatId)
+
     return
   }
 
