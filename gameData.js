@@ -166,8 +166,8 @@ module.exports = {
         ['Вот фото, по которым ты с легкостью сможешь найти свой заветный подарок 🎁🥳🎁'],
       ],
       photo: [
-        ['https://github.com/RomanMorf/newyear_tg_bot/blob/master/assets/photo_1_1.jpg?raw=true'],
-        ['https://github.com/RomanMorf/newyear_tg_bot/blob/master/assets/photo_1_2.jpg?raw=true'],
+        ['https://github.com/RomanMorf/newyear_tg_bot/blob/master/assets/photo_11.jpg'],
+        ['https://github.com/RomanMorf/newyear_tg_bot/blob/master/assets/photo_12.jpg'],
       ]
     },
   }

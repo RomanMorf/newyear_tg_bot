@@ -18,7 +18,7 @@ function showStats() {
 }
 
 let chatId = 1
-let gameCount = 12
+let gameCount = 13
 
 setInterval(() => {
   const data = new Date
