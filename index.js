@@ -1,5 +1,5 @@
 const TelegramBot = require('node-telegram-bot-api');
-const { gameOptions } = require('./options')
+const { gameOptions, alcoholOptions } = require('./options')
 const { gameData } = require('./gameData')
 
 const token = '5076160316:AAHkj9m25Kfx0T8l4JQbqxt8R0gLpWtE3SI';
@@ -19,10 +19,12 @@ function showStats() {
 
 let chatId = 1
 let gameCount = 13
+let chatIdArr = []
 
 setInterval(() => {
   const data = new Date
   console.log(data, 'gameCount -', gameCount);
+  console.log(chatIdArr, 'chatIdArr');
 }, 5000);
 
 
@@ -62,6 +64,7 @@ function superPuperGame(text, gameData, chatId) {
 bot.on('message', msg => {
   const chatId = msg.chat.id;
   const text = msg.text.toLocaleLowerCase()
+  chatIdArr.push(chatId)
 
   if (text === '/start') {
     sendMesFunc(`Приветствую - ${msg.from.first_name} ${msg.from.last_name}`, 0, chatId, gameOptions)
@@ -81,6 +84,15 @@ bot.on('message', msg => {
     gameCount = 1
     return 
   }
+
+  if (text === '/alco') {
+    const name = msg.from.first_name
+    const lastname = msg.from.last_name
+    sendMesFunc(`Приветствую - ${name ? name : ''} ${lastname ? lastname : ''}`, 0, chatId, alcoholOptions)
+    return 
+  }
+
+
 
   superPuperGame(text, gameData, chatId)
 })
@@ -123,6 +135,20 @@ bot.on('callback_query', (msg) => {
 Для это необходимо снова написать в чат /start
 `, 2, chatId)
 sendMesFunc('Не переживай. Старуй у тебя всё получиться ! /start', 5, chatId)
+    return
+  }
+
+
+  if (data === '/beer') {
+    console.log(chatId, 'заказал пиво');
+    sendMesFunc(`Ваш зака на 1 пиво - принят )`, 0, chatId)
+    sendMesFunc(`Ожидайте )`, 3, chatId)
+    return
+  }
+  if (data === '/champane') {
+    console.log(chatId, 'заказал шампанское');
+    sendMesFunc(`Ваш зака на бокал шампанского - принят )`, 0, chatId)
+    sendMesFunc(`Ожидайте )`, 3, chatId)
     return
   }
 

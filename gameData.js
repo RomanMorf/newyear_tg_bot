@@ -158,7 +158,7 @@ module.exports = {
         ['https://chudo.tech/wp-content/uploads/2016/12/fen-Dyson-Supersonic-5.jpg'],
       ]
     },
-    13: { // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    13: {
       answer: 'dyson',
       altText: 'Уже совсем не много 🥳 Следуй инструкциям 😘',
       text: [
