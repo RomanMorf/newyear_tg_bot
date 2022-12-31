@@ -7,9 +7,9 @@ const token = '5076160316:AAHkj9m25Kfx0T8l4JQbqxt8R0gLpWtE3SI';
 const bot = new TelegramBot(token, {polling: true});
 
 bot.setMyCommands([
-  {command: '/start', description: 'Начальное приветствие'},
-  {command: '/game', description: 'Начало игры по поиску подарка'},
-  {command: '/info', description: 'Получить информацию по игре'},
+  {command: '/start', description: 'Привітання'},
+  {command: '/game', description: 'Початок гри'},
+  {command: '/info', description: 'Інформація по щодо гри'},
 ])
 
 function showStats() {
