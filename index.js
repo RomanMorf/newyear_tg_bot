@@ -18,7 +18,7 @@ function showStats() {
 }
 
 let chatId = 1
-let gameCount = 13
+let gameCount = 8
 let chatIdArr = []
 
 setInterval(() => {
